@@ -1,0 +1,40 @@
+TODO
+
+Online level search sort
+Stop using sessions
+To fix the box sprite
+
+To create an offline level with all of those new songs
+Progress bar
+
+To add death effects
+To add more objects to the editor
+Modifiy all the show_message_async by the GD's blue box with the OK button
+The downloads of a level stored in a DB with the dest level ID and the used who downloaded the Level
+Change all the old views by the new camera functions
+At mod or admin rate first check if the siggned in user is really admin (stored in the server)
+if amiadmin is true and the server saved is false, the user will be banned
+Change all the editor btns and add the btn parent as its parent and modify basically all xd
+A server-made checking if you're mod when rating levels
+
+A better account handling system (Profile photo, add posts etc...)
+A more beautiful top 100
+
+Add the ground left
+Added the menuLoop sound
+Add a pause menu where 'tis needed
+To get creator points it's neccessary to have star and difficulty rating
+
+Vault
+Another vault xd
+Store
+Another store xd
+An official level for every song
+
+Add the final animation at endin' a level
+In the editor, all of the object selector, whose obj_*tab* is undefined won't be visible
+Add the pause mode to the editor
+The player name at the top 100 leaderboard will be placed at the center
+
+To add all the left GUI to the editor - workin' on it but dunno how to do dis
+Add some icons for every vehicle - Do it later

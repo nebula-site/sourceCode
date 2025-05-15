@@ -1,0 +1,1 @@
+global.colourspage -=1
