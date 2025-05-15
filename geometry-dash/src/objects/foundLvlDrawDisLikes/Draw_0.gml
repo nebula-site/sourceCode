@@ -1,1 +1,0 @@
-draw_text_outline(x, y, global.lvldlikes, c_white, c_black)

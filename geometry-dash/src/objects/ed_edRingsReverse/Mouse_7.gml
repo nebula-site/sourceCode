@@ -1,1 +1,0 @@
-global.selected_obj.reverse = !global.selected_obj.reverse

@@ -1,1 +1,0 @@
-draw_text_outline(x, y, global.lvllikes, c_white, c_black)

@@ -1,2 +1,0 @@
-instance_destroy(GChoicer)
-instance_destroy(GSelectorClickableClose)

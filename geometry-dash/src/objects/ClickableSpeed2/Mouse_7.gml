@@ -1,1 +1,0 @@
-global.levelspeed =1 

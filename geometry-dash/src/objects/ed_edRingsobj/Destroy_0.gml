@@ -1,2 +1,0 @@
-instance_destroy(ed_edRingsReverse)
-instance_destroy(ed_edRingsClickableExit)
