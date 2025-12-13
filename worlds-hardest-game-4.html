@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        /* 1. Crucial for the Parent Page: Remove the default browser margin/padding from the main <body> */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray to show the edge of the parent window */
+        }
+
+        /* 2. Style the Iframe itself */
+        #no-margin-iframe {
+            /* Ensures it takes up the full width/height of its parent (which is the body) */
+            width: 100%; 
+            height: 100vh; /* 100% of the viewport height */
+            
+            /* Removes the default border around the iframe */
+            border: none; 
+            
+            /* Ensures no extra margin or padding is accidentally added */
+            margin: 0;
+            padding: 0;
+            
+            /* Block display helps prevent small gaps below the element */
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <iframe 
+        id="no-margin-iframe" 
+        src="https://script.google.com/macros/s/AKfycbwhZ8UArrc7PVzRXXs_N8GE11lmrE1gFASscoys_AclHvY2qGHsN2YMLP0XHpzCJRJyDQ/exec" 
+        frameborder="0"
+    ></iframe>
+</body>
+</html>
