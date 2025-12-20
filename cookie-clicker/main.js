@@ -1,3 +1,4 @@
+
 ﻿/*
 All this code is copyright Orteil, 2013-2023.
 	-with some help, advice and fixes by Nicholas Laux, Debugbro, Opti, the folks at Playsaurus, and lots of people on reddit, Discord, and the DashNet forums
@@ -240,7 +241,7 @@ var shortenNumber=function(val)
 	//if no scientific notation, return as is, else :
 	//keep only the 5 first digits (plus dot), round the rest
 	//may or may not work properly
-	if (val>=1000000 && isFe(val))
+	if (val>=1000000 && isFinite(val))
 	{
 		var num=val.toString();
 		var ind=num.indexOf('e+');
@@ -1915,10 +1916,6 @@ Game.Launch=function()
 	Game.ready=0;
 	
 	Game.Load=function(callback)
-		// Add this to your main. js initialization section
-if (window.self !== window.top) {
-    document.body.classList.add('inIframe');
-}
 	{
 		//l('offGameMessage').innerHTML='<div style="padding:64px 128px;"><div class="title">Loading...</div></div>';
 		Game.Loader=new Loader();
@@ -16866,9 +16863,7 @@ window.onload=function()
 				LoadLang('loc/'+lang+'.js?v='+Game.version,function(){
 					var launch=function(){
 						Game.Launch();
-						if (top!=self) Game.ErrorFrame();
-						else
-						{
+						
 							console.log('[=== '+choose([
 								'Oh, hello!',
 								'hey, how\'s it hangin',
@@ -16879,7 +16874,7 @@ window.onload=function()
 							Game.Load(function(){Game.Init();if (firstLaunch) Game.showLangSelection(true);});
 							//try {Game.Load(Game.Init);}
 							//catch(err) {console.log('ERROR : '+err.message);}
-						}
+						
 					}
 					if (App && App.loadMods) App.loadMods(launch);
 					else launch();
