@@ -240,7 +240,7 @@ var shortenNumber=function(val)
 	//if no scientific notation, return as is, else :
 	//keep only the 5 first digits (plus dot), round the rest
 	//may or may not work properly
-	if (val>=1000000 && isFinite(val))
+	if (val>=1000000 && isFe(val))
 	{
 		var num=val.toString();
 		var ind=num.indexOf('e+');
@@ -1915,6 +1915,10 @@ Game.Launch=function()
 	Game.ready=0;
 	
 	Game.Load=function(callback)
+		// Add this to your main. js initialization section
+if (window.self !== window.top) {
+    document.body.classList.add('inIframe');
+}
 	{
 		//l('offGameMessage').innerHTML='<div style="padding:64px 128px;"><div class="title">Loading...</div></div>';
 		Game.Loader=new Loader();
