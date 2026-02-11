@@ -94,9 +94,8 @@ function js_trace(text)
 
 function js_iframed( )
 {
-  if(window.self != window.top)
-      return 1; else
-      return 0;
+  // Allow iframes - return 0 to disable sitelock iframe blocking
+  return 0;
 }
 
 function js_getParentDomain()
