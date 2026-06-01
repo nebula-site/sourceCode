@@ -2,31 +2,6 @@ if (typeof consoleLog== 'undefined') {
   consoleLog= console.log;
 }
 
-xlocation= new Proxy(location, {
-  get: function(target, property, receiver) {
-    console.log("--fx--xlocation--get--property--", property);
-    let targetObj = target[property];
-    if (typeof targetObj == "function") {
-      return (...args) => target[property].apply(target, args);
-    } else {
-      if (property== "host" || property=="hostname") {
-        return "localhost";
-      }
-      if (property== "href") {
-        return "https://localhost/";
-      }
-      if (property== "origin") {
-        return "https://localhost/";
-      }
-      return targetObj;
-    }
-  },
-  set: function(target, property, receiver) {
-    console.log("--fx--xlocation--set--property--", property, receiver);
-    return true;
-  }
-});
-
 YYG= {
   TYPE: {
     INTERSTITIAL: 0,
@@ -56,29 +31,6 @@ YYGamesList= [{
 }];
 
 YYGGames= function () {
-  // ***** UTILS *****
-  function loadJS(FILE_URL, callback) {
-    let scriptEle = document.createElement("script");
-  
-    scriptEle.setAttribute("src", FILE_URL);
-    scriptEle.setAttribute("type", "text/javascript");
-    scriptEle.setAttribute("async", true);
-  
-    document.body.appendChild(scriptEle);
-    
-    // Success
-    scriptEle.addEventListener("load", () => {
-      console.log("--fx--gdsdk--loadJS Done--");
-      callback(true);
-    });
-    
-     // Error
-    scriptEle.addEventListener("error", () => {
-      console.log("--fx--gdsdk--loadJS Error--");
-      callback(false);
-    });
-  }
-  
   // ***** INITALIZE *****
   this.forgames= YYGamesList;
 
@@ -132,34 +84,21 @@ YYGGames= function () {
     consoleLog("--fx--YYGGames--showSplash--", arguments);
   }
     
-  this.showInterstitial= function(func) {
-    consoleLog("--fx--showInterstitial--", arguments);
-    loadJS("https://www.ubg235.com/ads/commercial.js", (success)=> {
-      if (success) {
-        console.log("--fx--showInterstitial--Done--");        
-      } else {
-        console.log("--fx--showInterstitial--Rejected--");
-      }
-      func();
-    });
+  this.showInterstitial= function(options) {
+    consoleLog("--fx--showInterstitial--", options);
+    options.beforeShowAd();
+    options.afterShowAd();    
     return true;
   }
 
-  this.showReward= function(func) {    
+  this.showReward= function(options) {
+    options.rewardComplete();
     consoleLog("--fx--showReward--", arguments);
-    loadJS("https://www.ubg235.com/ads/rewarded.js", (success)=> {
-      if (success) {
-        console.log("--fx--showReward--Done--");
-        func();
-      } else {
-        console.log("--fx--showReward--Rejected--");
-      }
-    });    
   }
 
-  this.onAfterShowAd= function(func) {
+  this.onAfterShowAd= function(callback) {
     consoleLog("--fx--onAfterShowAd--", arguments);
-    func();
+    callback();
     return true;
   }
 
@@ -180,4 +119,5 @@ YYGGames= function () {
   }
 }
 
+YYGSDK= new YYGGames();
 YYGGames= new YYGGames();
